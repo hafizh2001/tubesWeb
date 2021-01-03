@@ -81,6 +81,14 @@
               <p>EKONOMI</p>
             </a>
           </li>
+@if(!Auth::guest())
+          <li>
+            <a href="/tabel">
+            <i class="now-ui-icons arrows-1_minimal-right"></i>
+              <p>Tabel</p>
+            </a>
+          </li>
+@endif
           <li>
             
         </ul>

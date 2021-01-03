@@ -30,11 +30,14 @@ Route::get('/about','AboutController@index')->name('about');
 //Route::get('/tampil','HomeController''@index')->name('tampil');
 Route::get('/tambah/add','HomeController@tampil');
 Route::post('/tambah/create','HomeController@create');
+Route::get('/tabel','HomeController@tabel');
 
 Route::get('/edit/{id}','HomeController@edit');
+Route::get('/delete/{id}','HomeController@delete');
 Route::post('/proUp','HomeController@proUp');
 
 Route::get('/tampil/delete/{id}','ArticleController@delete');
 
+Route::get('/cetak_pdf', 'HomeController@cetak_pdf');
 
 

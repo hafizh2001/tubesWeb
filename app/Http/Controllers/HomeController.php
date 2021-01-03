@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\berita;
 use App\categoris_id;
 use Illuminate\Http\Request;
-
+use PDF;
 
 class HomeController extends Controller
 {
@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index','ekonomi','politik','teknologi','getID','olahraga');
     }
 
     /**
@@ -29,6 +29,12 @@ class HomeController extends Controller
         $article = berita::all();
     
         return view ('home',['article'=>$article]);
+    }
+    public function tabel()
+    {
+        $berita = berita::all();
+    
+        return view ('tableAr',['berita'=>$berita]);
     }
     public function politik()
     {
@@ -106,5 +112,16 @@ public function proUp(Request $request)
    $ad->save();
    return redirect('/home');
 }
+public function delete($id){
 
+    $berita=berita::find($id)->delete();
+    
+    return redirect('/tabel');
+}
+public function cetak_pdf(){
+    $berita = berita::all();
+    $pdf = PDF::loadview('cetak_pdf',['berita'=>$berita]);
+    return $pdf->stream();
+   }
+   
 }

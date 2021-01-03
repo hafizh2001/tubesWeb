@@ -1,9 +1,9 @@
 
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
-<div class="col-md-12">
-<div class="card mb-1">
+
+<div class="card">
 <form action="/tambah/create" method="post"enctype="multipart/form-data">
     
     @csrf
